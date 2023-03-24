@@ -3,10 +3,10 @@ from turtle import *
 from freegames import path
 
 car = path('car.gif')
-tiles = list(range(32)) * 2
+tiles = ["#","?","!","°","$","%","&","+","-","+-","*","@","=","/",":",";",",","a","x","z","ñ","k","p","c","m","g","s","t","z","n","r","d"]*2
 state = {'mark': None}
 hide = [True] * 64
-
+Numero_taps = 0
 def square(x, y):
     "Draw white square with black outline at (x, y)."
     up()
@@ -31,6 +31,8 @@ def tap(x, y):
     "Update mark and hidden tiles based on tap."
     spot = index(x, y)
     mark = state['mark']
+    global Numero_taps #numero de taps
+    Numero_taps += 1
 
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
@@ -51,6 +53,8 @@ def draw():
             x, y = xy(count)
             square(x, y)
 
+    goto(150,199) #Localizacion del contador de taps
+    write(Numero_taps) #imprime numero de taps
     mark = state['mark']
 
     if mark is not None and hide[mark]:
