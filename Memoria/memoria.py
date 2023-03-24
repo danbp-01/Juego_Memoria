@@ -52,15 +52,15 @@ def draw():
         if hide[count]:
             x, y = xy(count)
             square(x, y)
-
+    
     goto(150,199) #Localizacion del contador de taps
-    write(Numero_taps) #imprime numero de taps
+    write(Numero_taps, font=('Arial', 30, 'normal')) #imprime numero de taps y aumnnta la letra 
     mark = state['mark']
 
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        goto(x + 2, y)
+        goto(x + 15, y) #El 15 hace que este centrado el digito del cuadro
         color('black')
         write(tiles[mark], font=('Arial', 30, 'normal'))
 
